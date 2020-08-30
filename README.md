@@ -1,6 +1,8 @@
 # Iro
 
-![Iro](./screenshots/iro-branding.png "Iro")
+![Iro](./screenshots/iro-branding-grad.png "Iro")
+
+![Iro](./screenshots/iro-branding-alt.png "Iro-Alt")
 
 By George Brown, Matt Patterson and Josh Struve.
 
