@@ -17,7 +17,7 @@ VALUES
 
 INSERT INTO "language" ("id", "name", "user_id")
 VALUES
-  (1, 'Japenese', 1);
+  (1, 'Japanese', 1);
 
 INSERT INTO "word" ("id", "language_id", "original", "translation", "next")
 VALUES

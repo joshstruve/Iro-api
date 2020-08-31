@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 
+// eslint-disable-next-line no-useless-escape
 const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/;
 
 const UserService = {
@@ -45,7 +46,7 @@ const UserService = {
 		return db.transaction(async (trx) => {
 			const [languageId] = await trx
 				.into('language')
-				.insert([{ name: 'French', user_id }], ['id']);
+				.insert([{ name: 'Japanese', user_id }], ['id']);
 
 			// when inserting words,
 			// we need to know the current sequence number
