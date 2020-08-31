@@ -1,8 +1,14 @@
 # Iro
 
-![Iro](./screenshots/iro-branding-light.png "Iro")
+![Iro](./screenshots/branding-light.png "Iro Branding Light")
 
-![Iro](./screenshots/iro-branding-alt.png "Iro-Alt")
+![Iro](./screenshots/sign-up-page-light.png "Iro Light Sign Up Page")
+
+![Iro](./screenshots/log-in-page-light.png "Iro Light Log In Page")
+
+![Iro](./screenshots/branding-alt.png "Iro Branding Alt")
+
+![Iro](./screenshots/sign-up-page-alt.png "Iro Alt Sign Up Page")
 
 By George Brown, Matt Patterson and Josh Struve.
 
