@@ -1,6 +1,6 @@
 # Iro
 
-![Iro](./screenshots/iro-branding-grad.png "Iro")
+![Iro](./screenshots/iro-branding-light.png "Iro")
 
 ![Iro](./screenshots/iro-branding-alt.png "Iro-Alt")
 
