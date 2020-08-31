@@ -31,7 +31,9 @@ VALUES
   (8, 1, 'Pinku', 'pink', 9),
   (9, 1, 'Murasaki', 'purple', 10),
   (10, 1, 'Shiro', 'white', 11),
-  (11, 1, 'Hai-iro', 'gray', null);
+  (11, 1, 'Hai-iro', 'gray', 12);
+  (12, 1, 'Rairakku', 'lilac', null);
+  
 
 UPDATE "language" SET head = 1 WHERE id = 1;
 
