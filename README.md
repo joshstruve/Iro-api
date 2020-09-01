@@ -10,6 +10,8 @@
 
 ![Iro](./screenshots/sign-up-page-alt.png "Iro Alt Sign Up Page")
 
+![Iro](./screenshots/dashboard.png "Iro Dashboard")
+
 By George Brown, Matt Patterson and Josh Struve.
 
 ## Local dev setup
