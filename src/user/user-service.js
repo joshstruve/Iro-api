@@ -64,7 +64,8 @@ const UserService = {
 				['Pinku', 'pink', 9],
 				['Murasaki', 'purple', 10],
 				['Shiro', 'white', 11],
-				['Hai-iro', 'gray', null],
+				['Hai-iro', 'gray', 12],
+				['Rairakku', 'lilac', null],
 			];
 
 			const [languageHeadId] = await trx.into('word').insert(

@@ -24,7 +24,9 @@ const LanguageService = {
 				'next',
 				'memory_value',
 				'correct_count',
-				'incorrect_count'
+				'incorrect_count',
+				'hex',
+				'script'
 			)
 			.where({ language_id });
 	},
@@ -39,7 +41,9 @@ const LanguageService = {
 				'next',
 				'memory_value',
 				'correct_count',
-				'incorrect_count'
+				'incorrect_count',
+				'hex',
+				'script'
 			)
 			.where({ id: head })
 			.first();

@@ -8,7 +8,9 @@ CREATE TABLE "word" (
   "language_id" INTEGER REFERENCES "language"(id)
     ON DELETE CASCADE NOT NULL,
   "next" INTEGER REFERENCES "word"(id)
-    ON DELETE SET NULL
+    ON DELETE SET NULL,
+  "hex" TEXT NOT NULL,
+  "script" TEXT NOT NULL
 );
 
 ALTER TABLE "language"
