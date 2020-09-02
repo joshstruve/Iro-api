@@ -32,8 +32,8 @@ const LanguageService = {
 			)
 			.where({ language_id })
 	},
-	populateLinkedlist(db, language_id, ll) {
-		const temp = db
+	async populateLinkedlist(db, language_id, ll) {
+		const temp = await db
 			.from('word')
 			.select(
 				'id',
@@ -43,13 +43,18 @@ const LanguageService = {
 				'next',
 				'memory_value',
 				'correct_count',
-				'incorrect_count'
+				'incorrect_count',
+				'hex',
+				'script'
 			)
 			.where({ language_id })
+		console.log(temp)
 		//a.map is populating the LL
-		let list = temp.map((word) => ll.insertLast(word))
+		// let list = temp.map((word) => ll.insertLast(word))
+		temp.forEach((word) => ll.insertLast(word))
 		//return a is returning the aray of words from db
-		return list
+
+		return temp
 	},
 	async insertNewLinkedList(db, ll) {
 		for (let i = 0; i < ll.length; i++) {

@@ -59,7 +59,8 @@ languageRouter.get('/head', async (req, res, next) => {
 		if (head) {
 			serviceObject = {
 				nextWord: head.original,
-				totalScore: head.correct_count - head.incorrect_count,
+				total_score:
+					head.correct_count - head.incorrect_count,
 				wordCorrectCount: head.correct_count,
 				wordIncorrectCount: head.incorrect_count,
 			}
@@ -96,6 +97,7 @@ languageRouter.post('/guess', json, async (req, res, next) => {
 			req.language.id,
 			ll
 		)
+
 		const language = await LanguageService.getUsersLanguage(
 			req.app.get('db'),
 			req.user.id
@@ -105,24 +107,27 @@ languageRouter.post('/guess', json, async (req, res, next) => {
 			nextWord: words[1].original,
 			wordCorrectCount: words[1].correct_count,
 			wordIncorrectCount: words[1].incorrect_count,
-			totalScore: language.totalScore,
+			total_score: language.total_score,
 			answer: words[0].translation,
 			isCorrect: false,
 		}
 
-		if (sanitizeGuess === ll.head.value.translation) {
-			ll.head.value.memoryValue *= 2
+		if (
+			sanitizeGuess.toLowerCase() ===
+			ll.head.value.translation.toLowerCase()
+		) {
+			ll.head.value.memory_value *= 2
 			ll.head.value.correct_count++
-			language.totalScore += 1
+			language.total_score += 1
 
 			response = { ...response, isCorrect: true }
 		} else {
 			ll.head.value.incorrect_count++
-			ll.head.value.memoryValue = 1
+			ll.head.value.memory_value = 1
 			response = { ...response, isCorrect: false }
 		}
 
-		let memory = ll.head.value.memoryValue
+		let memory = ll.head.value.memory_value
 		let temp = ll.head
 		//
 		while (temp.next !== null && memory > 0) {
@@ -130,20 +135,26 @@ languageRouter.post('/guess', json, async (req, res, next) => {
 			let tempTranslation = temp.value.translation
 			let tempCorrectCount = temp.value.correct_count
 			let tempInCorrectCount = temp.value.incorrect_count
-			let tempMemory = temp.value.memoryValue
+			let tempMemory = temp.value.memory_value
+			let tempHex = temp.value.hex
+			let tempScript = temp.value.script
 
 			temp.value.original = temp.next.value.original
 			temp.value.translation = temp.next.value.translation
 			temp.value.correct_count = temp.next.value.correct_count
 			temp.value.incorrect_count =
 				temp.next.value.incorrect_count
-			temp.value.memoryValue = temp.next.value.memoryValue
+			temp.value.memory_value = temp.next.value.memory_value
+			temp.value.hex = temp.next.value.hex
+			temp.value.script = temp.next.value.script
 
 			temp.next.value.original = tempOriginal
 			temp.next.value.translation = tempTranslation
 			temp.next.value.correct_count = tempCorrectCount
 			temp.next.value.incorrect_count = tempInCorrectCount
-			temp.next.value.memoryValue = tempMemory
+			temp.next.value.memory_value = tempMemory
+			temp.next.value.hex = tempHex
+			temp.next.value.script = tempScript
 
 			temp = temp.next
 			memory--
@@ -153,7 +164,7 @@ languageRouter.post('/guess', json, async (req, res, next) => {
 		let llArray = []
 
 		while (arrTemp) {
-			ll.push(arrTemp.value)
+			llArray.push(arrTemp.value)
 			arrTemp = arrTemp.next
 		}
 
