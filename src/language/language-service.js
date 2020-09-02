@@ -1,3 +1,5 @@
+const knex = require('knex')
+
 const LanguageService = {
 	getUsersLanguage(db, user_id) {
 		return db
@@ -10,7 +12,7 @@ const LanguageService = {
 				'language.total_score'
 			)
 			.where('language.user_id', user_id)
-			.first();
+			.first()
 	},
 
 	getLanguageWords(db, language_id) {
@@ -28,26 +30,8 @@ const LanguageService = {
 				'hex',
 				'script'
 			)
-			.where({ language_id });
+			.where({ language_id })
 	},
-	getLanguageHead(db, head) {
-		return db
-			.from('word')
-			.select(
-				'id',
-				'language_id',
-				'original',
-				'translation',
-				'next',
-				'memory_value',
-				'correct_count',
-				'incorrect_count',
-				'hex',
-				'script'
-			)
-			.where({ id: head })
-			.first();
-	},
-};
+}
 
-module.exports = LanguageService;
+module.exports = LanguageService
