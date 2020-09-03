@@ -63,6 +63,8 @@ languageRouter.get('/head', async (req, res, next) => {
 					head.correct_count - head.incorrect_count,
 				wordCorrectCount: head.correct_count,
 				wordIncorrectCount: head.incorrect_count,
+				hex: head.hex,
+				script: head.script,
 			}
 		}
 		if (!head) {
@@ -85,9 +87,12 @@ languageRouter.post('/guess', json, async (req, res, next) => {
 
 		if (
 			sanitizeGuess === '' ||
+			// eslint-disable-next-line no-prototype-builtins
 			!req.body.hasOwnProperty('guess')
 		) {
-			res.status(400).json({ error: 'Guess cannot be blank' })
+			return res.status(400).json({
+				error: "Missing 'guess' in request body",
+			})
 		}
 
 		const ll = new LinkedList()
@@ -102,11 +107,12 @@ languageRouter.post('/guess', json, async (req, res, next) => {
 			req.app.get('db'),
 			req.user.id
 		)
-
 		let response = {
 			nextWord: words[1].original,
 			wordCorrectCount: words[1].correct_count,
 			wordIncorrectCount: words[1].incorrect_count,
+			nextHex: words[1].hex,
+			nextScript: words[1].script,
 			total_score: language.total_score,
 			answer: words[0].translation,
 			isCorrect: false,
@@ -117,9 +123,9 @@ languageRouter.post('/guess', json, async (req, res, next) => {
 			ll.head.value.translation.toLowerCase()
 		) {
 			ll.head.value.memory_value *= 2
-			ll.head.value.correct_count++
-			language.total_score += 1
-
+			ll.head.value.correct_count += 1
+			response.total_score++
+			language.total_score++
 			response = { ...response, isCorrect: true }
 		} else {
 			ll.head.value.incorrect_count++
@@ -168,11 +174,11 @@ languageRouter.post('/guess', json, async (req, res, next) => {
 			arrTemp = arrTemp.next
 		}
 
-		LanguageService.insertNewLinkedList(
+		await LanguageService.insertNewLinkedList(
 			req.app.get('db'),
 			llArray
 		)
-		LanguageService.updateLanguagetotalScore(
+		await LanguageService.updateLanguagetotalScore(
 			req.app.get('db'),
 			language
 		)
