@@ -5,7 +5,7 @@ const { requireAuth } = require('../middleware/jwt-auth')
 const LinkedList = require('./linked-list')
 
 const languageRouter = express.Router()
-const json = express.json()
+const jsonParser = express.json()
 
 languageRouter.use(requireAuth).use(async (req, res, next) => {
 	try {
@@ -76,14 +76,14 @@ languageRouter.get('/head', async (req, res, next) => {
 	}
 })
 
-languageRouter.post('/guess', json, async (req, res, next) => {
+languageRouter.post('/guess', jsonParser, async (req, res, next) => {
 	try {
 		/**
 		 * grab user input - req.body
 		 */
 		const { guess } = req.body
 		const sanitizeGuess = xss(guess)
-
+		console.log(guess, req.body)
 		if (
 			sanitizeGuess === '' ||
 			// eslint-disable-next-line no-prototype-builtins
