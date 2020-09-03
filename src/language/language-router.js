@@ -56,20 +56,20 @@ languageRouter.get('/head', async (req, res, next) => {
 		if (words) {
 			head = copy[0]
 		}
+		if (!head) {
+			return res.status(400).send({ error: 'Missing head' })
+		}
 		if (head) {
 			serviceObject = {
 				nextWord: head.original,
-				total_score:
-					head.correct_count - head.incorrect_count,
+				total_score: req.language.total_score,
 				wordCorrectCount: head.correct_count,
 				wordIncorrectCount: head.incorrect_count,
 				hex: head.hex,
 				script: head.script,
 			}
 		}
-		if (!head) {
-			res.status(400).send({ error: 'Missing head' })
-		}
+
 		res.json(serviceObject)
 	} catch (error) {
 		next(error)
