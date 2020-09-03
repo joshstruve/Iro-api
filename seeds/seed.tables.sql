@@ -21,7 +21,7 @@ VALUES
 
 INSERT INTO "word" ("id", "language_id", "original", "translation", "next", "hex", "script")
 VALUES
-  (1, 1, 'Orange', 'Oranji', 2, '#FFB74D', 'orange.svg'),
+  (1, 1, 'Orange', 'Orenji', 2, '#FFB74D', 'orange.svg'),
   (2, 1, 'Yellow', 'Ki-iro', 3, '#FFF07F', 'yellow.svg'),
   (3, 1, 'Blue', 'Ao', 4, '#84B3FD', 'blue.svg'),
   (4, 1, 'Red', 'Aka', 5, '#B51F23', 'red.svg'),
