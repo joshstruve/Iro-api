@@ -241,9 +241,10 @@ describe.only('Language Endpoints', function () {
 						nextWord: testLanguagesWords[1].original,
 						total_score: 0,
 						wordCorrectCount: 0,
-						wordIncorrectCount: 0,
+						wordIncorrectCount: 1,
 						hex: '#000',
 						script: 'japanese characters',
+						original: testLanguagesWords[0].original,
 						answer: testLanguagesWords[0].translation,
 						isCorrect: false,
 					})
@@ -272,6 +273,7 @@ describe.only('Language Endpoints', function () {
 						wordIncorrectCount: 1,
 						hex: '#000',
 						script: 'japanese characters',
+						original: testLanguagesWords[1].original,
 						answer: testLanguagesWords[1].translation,
 						isCorrect: false,
 					})
@@ -298,10 +300,11 @@ describe.only('Language Endpoints', function () {
 					.expect({
 						nextWord: testLanguagesWords[1].original,
 						total_score: 1,
-						wordCorrectCount: 0,
+						wordCorrectCount: 1,
 						wordIncorrectCount: 0,
 						hex: '#000',
 						script: 'japanese characters',
+						original: testLanguagesWords[0].original,
 						answer: testLanguagesWords[0].translation,
 						isCorrect: true,
 					})
@@ -332,10 +335,11 @@ describe.only('Language Endpoints', function () {
 					.expect({
 						nextWord: testLanguagesWords[2].original,
 						total_score: 2,
-						wordCorrectCount: 0,
+						wordCorrectCount: 1,
 						wordIncorrectCount: 0,
 						hex: '#000',
 						script: 'japanese characters',
+						original: testLanguagesWords[1].original,
 						answer: testLanguagesWords[1].translation,
 						isCorrect: true,
 					})
@@ -357,6 +361,7 @@ describe.only('Language Endpoints', function () {
 						wordIncorrectCount: 0,
 						hex: '#000',
 						script: 'japanese characters',
+						original: testLanguagesWords[2].original,
 						answer: testLanguagesWords[2].translation,
 						isCorrect: true,
 					})

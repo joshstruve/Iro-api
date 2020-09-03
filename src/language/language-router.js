@@ -79,11 +79,12 @@ languageRouter.get('/head', async (req, res, next) => {
 languageRouter.post('/guess', jsonParser, async (req, res, next) => {
 	try {
 		/**
+		 *
 		 * grab user input - req.body
+		 *
 		 */
 		const { guess } = req.body
 		const sanitizeGuess = xss(guess)
-		console.log(guess, req.body)
 		if (
 			sanitizeGuess === '' ||
 			// eslint-disable-next-line no-prototype-builtins
@@ -108,12 +109,13 @@ languageRouter.post('/guess', jsonParser, async (req, res, next) => {
 		)
 		let response = {
 			nextWord: words[1].original,
-			wordCorrectCount: words[1].correct_count,
-			wordIncorrectCount: words[1].incorrect_count,
+			wordCorrectCount: words[0].correct_count,
+			wordIncorrectCount: words[0].incorrect_count,
 			hex: words[0].hex,
 			script: words[0].script,
 			total_score: language.total_score,
 			answer: words[0].translation,
+			original: words[0].original,
 			isCorrect: false,
 		}
 
@@ -123,11 +125,13 @@ languageRouter.post('/guess', jsonParser, async (req, res, next) => {
 		) {
 			ll.head.value.memory_value *= 2
 			ll.head.value.correct_count += 1
+			response.wordCorrectCount++
 			response.total_score++
 			language.total_score++
 			response = { ...response, isCorrect: true }
 		} else {
 			ll.head.value.incorrect_count++
+			response.wordIncorrectCount++
 			ll.head.value.memory_value = 1
 			response = { ...response, isCorrect: false }
 		}

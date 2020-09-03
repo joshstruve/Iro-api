@@ -48,7 +48,6 @@ const LanguageService = {
 				'script'
 			)
 			.where({ language_id })
-		console.log(temp)
 		//a.map is populating the LL
 		// let list = temp.map((word) => ll.insertLast(word))
 		temp.forEach((word) => ll.insertLast(word))
