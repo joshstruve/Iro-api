@@ -70,7 +70,6 @@ languageRouter.get('/head', async (req, res, next) => {
 		if (!head) {
 			res.status(400).send({ error: 'Missing head' })
 		}
-		console.log(serviceObject)
 		res.json(serviceObject)
 	} catch (error) {
 		next(error)
