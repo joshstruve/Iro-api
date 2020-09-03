@@ -1,5 +1,3 @@
-const knex = require('knex')
-
 const LanguageService = {
 	getUsersLanguage(db, user_id) {
 		return db
