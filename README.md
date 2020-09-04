@@ -1,16 +1,40 @@
 # Iro
 
-![Iro](./screenshots/branding-light.png "Iro Branding Light")
+Iro uses spaced repetition learning to teach you the words for a variety of colors in the Japanese language.
 
-![Iro](./screenshots/sign-up-page-light.png "Iro Light Sign Up Page")
+## Credits
 
-![Iro](./screenshots/log-in-page-light.png "Iro Light Log In Page")
+Matt Patterson and Josh Struve.
 
+## UI
 
+### Branding
 
-![Iro](./screenshots/dashboard.png "Iro Dashboard")
+![Iro Branding](./screenshots/iro-branding.png "Iro Branding")
 
-By Matt Patterson and Josh Struve.
+### Log In
+
+![Iro Log In](./screenshots/Iro-login.png "Iro Log In")
+
+### Sign Up
+
+![Iro Sign Up](./screenshots/Iro-sign-up.png "Iro Sign Up")
+
+### Dashboard
+
+![Iro Dashboard](./screenshots/iro-dashboard.png "Iro Dashboard")
+
+### Question
+
+![Iro Question](./screenshots/iro-question.png "Iro Question")
+
+### Correct Answer
+
+![Iro Correct Answer](./screenshots/Iro-correct-answer.png "Iro Correct Answer")
+
+### Incorrect Answer
+
+![Iro Incorrect Answer](./screenshots/Iro-incorrect-answer.png "Iro Incorrect Answer")
 
 ## Technology
 
