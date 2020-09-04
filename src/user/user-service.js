@@ -5,7 +5,7 @@ const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*
 
 const UserService = {
 	hasUserWithUserName(db, username) {
-		return db('user')
+		return db('sr_user')
 			.where({ username })
 			.first()
 			.then((user) => !!user)
@@ -13,7 +13,7 @@ const UserService = {
 	insertUser(db, newUser) {
 		return db
 			.insert(newUser)
-			.into('user')
+			.into('sr_user')
 			.returning('*')
 			.then(([user]) => user)
 	},
@@ -55,21 +55,6 @@ const UserService = {
 				.from('word_id_seq')
 				.select('last_value')
 				.first()
-			/**
- *  1, 'Orange', 'Orenji', 2, '#FFB74D', 'orange.svg'),
-  (2, 1, 'Yellow', 'Ki-iro', 3, '#FFF07F', 'yellow.svg'),
-  (3, 1, 'Blue', 'Ao', 4, '#84B3FD', 'blue.svg'),
-  (4, 1, 'Red', 'Aka', 5, ),
-  (5, 1, 'Green', 'Midori', 6,),
-  (6, 1, 'Black', 'Kuro', 7, ),
-  (7, 1, 'Brown', 'Cha-iro', 8, ),
-  (8, 1, 'Pink', 'Pinku', 9, ),
-  (9, 1, 'Purple', 'Murasaki', 10, ),
-  (10, 1, 'White', 'Shiro', 11, ),
-  (11, 1, 'Gray', 'Hai-iro', 12, ),
-  (12, 1, 'Lilac', 'Rairakku', null, );
-  
- */
 			const languageWords = [
 				['Orange', 'Orenji', 2, '#FFB74D', 'orange.svg'],
 				['Yellow', 'Ki-iro', 3, '#FFF07F', 'yellow.svg'],
