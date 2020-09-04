@@ -144,7 +144,7 @@ Supported endpoints:
       }
       ```
 `/user`
-   - Method: `POST`
+   - Method: `/POST`
    - Request Params: 
      ```javascript
      {
