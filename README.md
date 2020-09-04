@@ -10,7 +10,7 @@
 
 ![Iro](./screenshots/dashboard.png "Iro Dashboard")
 
-By George Brown, Matt Patterson and Josh Struve.
+By Matt Patterson and Josh Struve.
 
 ## Technology
 
