@@ -6,33 +6,84 @@
 
 ![Iro](./screenshots/log-in-page-light.png "Iro Light Log In Page")
 
-![Iro](./screenshots/branding-alt.png "Iro Branding Alt")
 
-![Iro](./screenshots/sign-up-page-alt.png "Iro Alt Sign Up Page")
 
 ![Iro](./screenshots/dashboard.png "Iro Dashboard")
 
 By George Brown, Matt Patterson and Josh Struve.
 
-## Local dev setup
+## Technology
 
-If using user `dunder-mifflin`:
+PERN stack
+ - `PostgreSQL`
+ - `Express.js`
+ - `React.js`
+ - `Node.js`
+ 
+### Endpoints
 
-```bash
-mv example.env .env
-createdb -U dunder-mifflin spaced-repetition
-createdb -U dunder-mifflin spaced-repetition-test
-```
+Supported endpoints: 
+ - `/auth/token`
+ - `/language`
+ - `/language/head`
+ - `/language/guess`
+ - `/user`
+ 
+#### Sample Requests/Responses
 
-If your `dunder-mifflin` user has a password be sure to set it in `.env` for all appropriate fields. Or if using a different user, update appropriately.
-
-```bash
-npm install
-npm run migrate
-env MIGRATION_DB_NAME=spaced-repetition-test npm run migrate
-```
-
-And `npm test` should work at this point
+`/auth/token`
+  - Method: `/POST`
+  - Request Params:
+     - passwords must include at least 1 upper and lower case letter, 1 special character and 1 number
+   ```javascript
+   {
+      "username": "Marco Amigo",
+      "password": "Marco_password1"
+   }
+   ```
+   - Response
+      - `200`
+      ```javascript
+      {
+         "authToken": "jwt generated bearer token"
+      }
+      ```
+      - `400`
+      ```javascript
+      {
+          "error": 'Incorrect username or password',
+      }
+      ```
+`/language`
+   - Method: `/GET`
+   - Request Params: user and language database id
+   - Response
+      - `200`
+      ```javascript
+      {
+          "language": {
+           "id": 2,
+           "name": "Japanese",
+           "user_id": 2,
+           "head": 13,
+           "total_score": 0
+         },
+         "words": [
+           {
+            "id": 13,
+            "language_id": 2,
+            "original": "Orange",
+            "translation": "Orenji",
+            "next": 14,
+            "memory_value": 1,
+            "correct_count": 0,
+            "incorrect_count": 0,
+            "hex": "#FFB74D",
+            "script": "orange.svg"
+        },
+        // ...
+       }
+      ```
 
 ## Configuring Postgres
 
