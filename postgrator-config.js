@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 module.exports = {
 	migrationDirectory: 'migrations',
@@ -11,4 +11,4 @@ module.exports = {
 			: process.env.MIGRATION_DB_NAME,
 	username: process.env.MIGRATION_DB_USER,
 	password: process.env.MIGRATION_DB_PASS,
-};
+}
